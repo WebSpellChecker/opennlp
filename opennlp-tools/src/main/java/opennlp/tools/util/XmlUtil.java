@@ -37,6 +37,18 @@ public class XmlUtil {
     try {
       DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
       documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+      documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+      documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+      documentBuilderFactory.setFeature(
+          "http://apache.org/xml/features/disallow-doctype-decl", true);
+      documentBuilderFactory.setFeature(
+          "http://xml.org/sax/features/external-general-entities", false);
+      documentBuilderFactory.setFeature(
+          "http://xml.org/sax/features/external-parameter-entities", false);
+      documentBuilderFactory.setFeature(
+          "http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+      documentBuilderFactory.setXIncludeAware(false);
+      documentBuilderFactory.setExpandEntityReferences(false);
       return documentBuilderFactory.newDocumentBuilder();
     } catch (ParserConfigurationException e) {
       throw new IllegalStateException(e);
@@ -50,9 +62,18 @@ public class XmlUtil {
    */
   public static SAXParser createSaxParser() {
     SAXParserFactory spf = SAXParserFactory.newInstance();
+    spf.setNamespaceAware(true);
+    spf.setXIncludeAware(false);
     try {
       spf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-      return spf.newSAXParser();
+      spf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+      spf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+      spf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+      spf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+      SAXParser parser = spf.newSAXParser();
+      parser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+      parser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+      return parser;
     } catch (ParserConfigurationException | SAXException e) {
       throw new IllegalStateException(e);
     }

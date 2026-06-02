@@ -23,9 +23,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.apache.opennlp</groupId>
+    <groupId>com.webspellchecker</groupId>
     <artifactId>opennlp</artifactId>
-    <version>1.9.4</version>
+    <version>1.9.4-webspellchecker-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 

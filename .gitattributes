@@ -1,0 +1,4 @@
+# Enforce LF line endings repo-wide regardless of each developer's
+# core.autocrlf setting. Without this, Windows checkouts get CRLF which
+# breaks Checkstyle and the Brat format tests.
+* text=auto eol=lf

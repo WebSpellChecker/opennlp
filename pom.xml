@@ -29,9 +29,9 @@
 		<relativePath />
 	</parent>
 
-	<groupId>org.apache.opennlp</groupId>
+	<groupId>com.webspellchecker</groupId>
 	<artifactId>opennlp</artifactId>
-	<version>1.9.4</version>
+	<version>1.9.4-webspellchecker-1</version>
 	<packaging>pom</packaging>
 
 	<name>Apache OpenNLP Reactor</name>
@@ -176,7 +176,7 @@
 				<plugin>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>maven-bundle-plugin</artifactId>
-					<version>4.2.1</version>
+					<version>5.1.9</version>
 				</plugin>
 
 				<plugin>
